@@ -1,20 +1,31 @@
 package delaemcode.mym1y;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.View;
 
 public class Main
-        extends Activity
+        extends MyMyActivity
 {
-    @Override
-    protected void onCreate(Bundle savedInstanceState)
+
+    public Main()
     {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);
+        super(R.layout.main, R.id.mainframe);
     }
 
+
+    @Override
+    public void initFragments()
+    {
+
+    }
+
+    @Override
+    public void initViews()
+    {
+
+    }
+
+    //______________BUTTONS_ACTIONS
     public void enter(View view)
     {
         startActivityForResult(new Intent(this, Work.class), 0);
