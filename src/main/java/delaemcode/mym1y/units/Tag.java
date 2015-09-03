@@ -1,11 +1,15 @@
 package delaemcode.mym1y.units;
 
-public class Tag
+public abstract class Tag
+        extends Unit
 {
-    enum TypeTag
+    String name;
+    String color;
+
+    public Tag(String uid, String n, String c)
     {
-        date,
-        time,
-        map;
+        super(uid);
+        name = n;
+        color = c;
     }
 }
