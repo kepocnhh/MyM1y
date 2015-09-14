@@ -28,11 +28,11 @@ public abstract class MyMyAdapter
     private Activity activity;
     private MyMyAdapterListener listener;
     private LayoutInflater inflater;
-    protected ArrayList<Map<String, String>> data;
+    protected ArrayList data;
     protected int resourceID;
 
     public MyMyAdapter(Activity context,
-                               ArrayList<Map<String, String>> d,
+                               ArrayList d,
                        MyMyAdapterListener l, int id)
     {
         super(context, d, id, new String[]{}, new int[]{});

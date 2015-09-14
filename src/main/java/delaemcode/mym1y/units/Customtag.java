@@ -1,5 +1,7 @@
 package delaemcode.mym1y.units;
 
+import android.content.ContentValues;
+
 import java.util.List;
 
 public class Customtag
@@ -11,5 +13,11 @@ public class Customtag
     public Customtag(String uid, String n, String c)
     {
         super(uid, n, c);
+    }
+
+    @Override
+    protected ContentValues getContentValues(ContentValues cv)
+    {
+        return cv;
     }
 }

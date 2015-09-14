@@ -53,6 +53,6 @@ public class CashAccountsAdapter
     protected void realizeItem(MyMyHolder holder, int p)
     {
         CashAccountsHolder h = (CashAccountsHolder) holder;
-        h.name.setText(data.get(p).get(NAMEKEY));
+//        h.name.setText(data.get(p).get(NAMEKEY));
     }
 }

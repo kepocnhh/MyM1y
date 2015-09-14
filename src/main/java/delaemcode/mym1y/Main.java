@@ -1,7 +1,10 @@
 package delaemcode.mym1y;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.View;
+
+import delaemcode.mym1y.database.DBHelper;
 
 public class Main
         extends MyMyActivity
@@ -22,7 +25,6 @@ public class Main
     @Override
     public void initViews()
     {
-
     }
 
     //______________BUTTONS_ACTIONS
