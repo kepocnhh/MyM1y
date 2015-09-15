@@ -4,6 +4,7 @@ import android.net.Uri;
 
 import delaemcode.mym1y.database.contract.CashAccount;
 import delaemcode.mym1y.database.contract.Currency;
+import delaemcode.mym1y.database.contract.Transaction;
 
 public abstract class Contract
 {
@@ -14,10 +15,12 @@ public abstract class Contract
 
     public static final String TABLE_NAME_CASHACCOUNT="cashaccountstable";
     public static final String TABLE_NAME_CURRENCY="currencytable";
+    public static final String TABLE_NAME_TRANSACTION="transactionstable";
 
     public static final Contract[] contracts = {
             new CashAccount(),
-            new Currency()
+            new Currency(),
+            new Transaction()
     };
     public static Contract getContract(String tn)
     {
