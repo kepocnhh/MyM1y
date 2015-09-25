@@ -8,7 +8,7 @@ android {
         applicationId "delaemcode.mym1y"
         minSdkVersion 15
         targetSdkVersion 22
-        versionCode 1
+        versionCode 1092512
         versionName "1.0"
     }
     buildTypes {

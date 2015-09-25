@@ -10,7 +10,7 @@ import android.net.Uri;
 public class DBHelper
         extends SQLiteOpenHelper
 {
-    private static final int VERSION = 1509141728;
+    private static final int VERSION = 1509251218;
     private static final String DB_NAME = "mymydatabase";
 
     private static DBHelper instance;
@@ -61,6 +61,21 @@ public class DBHelper
         }
     }
 
+    public String getStringFromOption(String tableName, String where, String whereArgs, String columnName)
+    {
+        return getStringFromOption(Contract.getContract(tableName), where, whereArgs, columnName);
+    }
+    public String getStringFromOption(Contract contract, String where, String whereArgs, String columnName)
+    {
+        String selection = where+"=?";
+        String[] selectionArgs = new String[] {whereArgs};
+        Cursor c = query(contract, null, selection, selectionArgs, null);
+        c.moveToFirst();
+        String str;
+        str = c.getString(c.getColumnIndex(columnName));
+        c.close();
+        return str;
+    }
     public Cursor query(Contract contract, String[] projection, String selection, String[] selectionArgs, String sortOrder)
     {
         Cursor cursor = null;

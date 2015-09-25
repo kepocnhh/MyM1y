@@ -1,5 +1,10 @@
 package delaemcode.mym1y;
 
+import android.database.Cursor;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import delaemcode.mym1y.database.Contract;
 import delaemcode.mym1y.database.DBHelper;
 import delaemcode.mym1y.fragments.work.AccountsFragment;
@@ -30,12 +35,34 @@ public class Work
 
     private void initDB()
     {
-        Currency currency = new Currency("0", "Рубль", "руб");
-        CashAccount cashAccountSber = new CashAccount("0", "Сбербанк", currency, "0", CashAccount.TypeAccount.card, "1234567890", "icosberbank");
-        CashAccount cashAccountNal = new CashAccount("1", "Наличные", currency, "0", CashAccount.TypeAccount.cash, "", "iconalichko");
+        addCurrency(new Currency(null, "Рубль", "руб"));
+        Cursor cursor = DBHelper.getInstance(this).query(Contract.getContract(Contract.TABLE_NAME_CURRENCY), null, null, null, null);
+        List<Currency> currencys = getCurrencys(cursor);
+        addCashAccount(new CashAccount(null, "Сбербанк", currencys.get(0), "0", CashAccount.TypeAccount.card, "1234567890", "icosberbank"));
+        addCashAccount(new CashAccount(null, "Наличные", currencys.get(0), "0", CashAccount.TypeAccount.cash, "", "iconalichko"));
+    }
+    private void addCashAccount(CashAccount cashAccount)
+    {
+        DBHelper.getInstance(this).insert(Contract.getContract(Contract.TABLE_NAME_CASHACCOUNT), cashAccount.getContentValues());
+    }
+    private void addCurrency(Currency currency)
+    {
         DBHelper.getInstance(this).insert(Contract.getContract(Contract.TABLE_NAME_CURRENCY), currency.getContentValues());
-        DBHelper.getInstance(this).insert(Contract.getContract(Contract.TABLE_NAME_CASHACCOUNT), cashAccountSber.getContentValues());
-        DBHelper.getInstance(this).insert(Contract.getContract(Contract.TABLE_NAME_CASHACCOUNT), cashAccountNal.getContentValues());
+    }
+    public List<Currency> getCurrencys(Cursor cursor)
+    {
+        cursor.moveToFirst();
+        List<Currency> currencys = new ArrayList<>();
+        while(!cursor.isAfterLast())
+        {
+            String uid = cursor.getString(cursor.getColumnIndex(Contract.ID));
+            String name = cursor.getString(cursor.getColumnIndex(Contract.NAME));
+            String mesu = cursor.getString(cursor.getColumnIndex(delaemcode.mym1y.database.contract.Currency.MEASURE));
+            currencys.add(new Currency(uid, name, mesu));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return currencys;
     }
 
     @Override

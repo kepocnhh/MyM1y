@@ -5,7 +5,7 @@ import delaemcode.mym1y.database.Contract;
 public class Transaction
         extends Contract
 {
-    public static final String FROM = "from";
+    public static final String FROM = "fromCashAccount";
 
     @Override
     protected String setTableName()
