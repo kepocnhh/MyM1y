@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">MyM1y</string>
 
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <!-- COLORS -->
+    <color name="green">#31A920</color>
+    <color name="ye">#FFA500</color>
+    <color name="red">#FF0000</color>
 </resources>

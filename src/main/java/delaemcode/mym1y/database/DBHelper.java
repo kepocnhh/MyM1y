@@ -69,7 +69,8 @@ public class DBHelper
     {
         String selection = where+"=?";
         String[] selectionArgs = new String[] {whereArgs};
-        Cursor c = query(contract, null, selection, selectionArgs, null);
+        String[] projection = new String[] {columnName};
+        Cursor c = query(contract, projection, selection, selectionArgs, null);
         c.moveToFirst();
         String str;
         str = c.getString(c.getColumnIndex(columnName));
