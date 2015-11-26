@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="delaemcode.mym1y" >
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Main"
+            android:name=".ui.activities.Main"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -15,7 +18,12 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Work"
+            android:name=".ui.activities.Work"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name=".ui.activities.transactions.AddTransaction"
+            android:screenOrientation="portrait"
             android:label="@string/app_name" >
         </activity>
     </application>

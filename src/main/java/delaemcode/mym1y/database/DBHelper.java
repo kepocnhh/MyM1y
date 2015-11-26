@@ -10,7 +10,7 @@ import android.net.Uri;
 public class DBHelper
         extends SQLiteOpenHelper
 {
-    private static final int VERSION = 1509251218;
+    private static final int VERSION = 1511261650;
     private static final String DB_NAME = "mymydatabase";
 
     private static DBHelper instance;

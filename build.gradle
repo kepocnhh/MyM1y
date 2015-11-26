@@ -18,6 +18,20 @@ android {
         }
     }
 }
+android {
+    sourceSets {
+        main {
+            manifest.srcFile 'src/main/AndroidManifest.xml'
+            java.srcDir 'src'
+            res.srcDir 'res'
+            assets.srcDir 'assets'
+
+            jniLibs.srcDir 'libs'
+            jni.srcDirs = []           //disable automatic ndk-build call
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
