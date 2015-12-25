@@ -11,7 +11,7 @@ public class SQliteApi
     public static DatabaseHelper dbHelper;
     public static volatile SQLiteDatabase sdb;
     public static String DB_NAME = "mym1y";
-    public static int DB_VERSION = 1512251836;
+    public static int DB_VERSION = 1512251940;
 
     public static void createDb(Context context)
     {
@@ -61,10 +61,21 @@ public class SQliteApi
     public static Cursor getCashAccounts()
     {
         Cursor cursor = sdb.rawQuery(
-                "SELECT * "
+                "SELECT " //+ "* "
+                        + Tables.Currencies.TABLE_NAME + "." + BaseColumns._ID + " AS " + Tables.Currencies.CURRENCIES_ID + ", "
+                        + Tables.Currencies.TABLE_NAME + "." + Tables.NAME + " AS " + Tables.Currencies.CURRENCIES_NAME + ", "
+                        + Tables.Currencies.TABLE_NAME + "." + Tables.Currencies.MEASURE + ", "
+                        + Tables.CashAccountTypes.TABLE_NAME + "." + BaseColumns._ID + " AS " + Tables.CashAccountTypes.CASHACCOUNTTYPES_ID + ", "
+                        + Tables.CashAccountTypes.TABLE_NAME + "." + Tables.NAME + " AS " + Tables.CashAccountTypes.CASHACCOUNTTYPES_NAME + ", "
+                        + Tables.CashAccounts.TABLE_NAME + "." + BaseColumns._ID + ", "
+                        + Tables.CashAccounts.TABLE_NAME + "." + Tables.NAME + ", "
+                        + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.BALANCE + ", "
+                        + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.ACCOUNTNUMBER + ", "
+                        + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.ICO + " "
                 + "FROM " + Tables.CashAccounts.TABLE_NAME + " "
                         + "JOIN " + Tables.Currencies.TABLE_NAME + " "
-                        + "ON " + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.CURRENCY + "=" + Tables.Currencies.TABLE_NAME + "." + BaseColumns._ID + " "
+//                        + "ON " + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.CURRENCY + "=" + Tables.Currencies.TABLE_NAME + "." + BaseColumns._ID + " "
+                        + "ON " + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.CURRENCY + "=" + Tables.Currencies.CURRENCIES_ID + " "
                         + "JOIN " + Tables.CashAccountTypes.TABLE_NAME + " "
                         + "ON " + Tables.CashAccounts.TABLE_NAME + "." + Tables.CashAccounts.TYPE + "=" + Tables.CashAccountTypes.TABLE_NAME + "." + BaseColumns._ID + " "
 //                + where
@@ -78,6 +89,7 @@ public class SQliteApi
     /* ************************************************************************ */
     public static void clearDB(SQLiteDatabase db)
     {
+        db.execSQL("drop table if exists " + Tables.CashAccounts.TABLE_NAME);
         db.execSQL("drop table if exists " + Tables.CashAccountTypes.TABLE_NAME);
         db.execSQL("drop table if exists " + Tables.Currencies.TABLE_NAME);
     }
@@ -86,6 +98,7 @@ public class SQliteApi
     /* ************************************************************************ */
     public static void createDBTables(SQLiteDatabase db)
     {
+        db.execSQL(Tables.CashAccounts.CREATE_TABLE);
         db.execSQL(Tables.CashAccountTypes.CREATE_TABLE);
         db.execSQL(Tables.Currencies.CREATE_TABLE);
     }

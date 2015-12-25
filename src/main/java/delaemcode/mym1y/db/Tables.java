@@ -33,6 +33,8 @@ public class Tables
         public static final String TABLE_NAME = "currencies" + "table";
 
         public static final String MEASURE = "measure";
+        public static final String CURRENCIES_ID = "currencies_id";
+        public static final String CURRENCIES_NAME = "currencies_name";
 
         public static final String CREATE_TABLE = "create table if not exists " +
                 TABLE_NAME + "(" +
@@ -45,6 +47,9 @@ public class Tables
     public static class CashAccountTypes
     {
         public static final String TABLE_NAME = "cashaccounttypes" + "table";
+
+        public static final String CASHACCOUNTTYPES_ID = "cashaccounttypes_id";
+        public static final String CASHACCOUNTTYPES_NAME = "cashaccounttypes_name";
 
         public static final String CREATE_TABLE = "create table if not exists " +
                 TABLE_NAME + "(" +
