@@ -2,16 +2,6 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
-    <Button
-        android:text="enter"
-        android:onClick="enter"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
-    <Button
-        android:text="test"
-        android:onClick="test"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
     <FrameLayout
         android:id="@+id/mainframe"
         android:layout_width="match_parent"

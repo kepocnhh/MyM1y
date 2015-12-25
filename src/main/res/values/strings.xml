@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">MyM1y</string>
 
-    <!-- COLORS -->
-    <color name="green">#31A920</color>
-    <color name="ye">#FFA500</color>
-    <color name="red">#FF0000</color>
+    <!-- Fragments tags-->
+    <!-- Main-->
+    <string name="MainFragment">main_fragment</string>
 </resources>

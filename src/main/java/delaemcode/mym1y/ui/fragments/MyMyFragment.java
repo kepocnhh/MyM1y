@@ -7,35 +7,47 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import delaemcode.mym1y.listeners.MyMyFragmentListener;
+import delaemcode.mym1y.listeners.fragments.IMyMyFragmentClick;
 
 public abstract class MyMyFragment
         extends Fragment
 {
-    protected MyMyFragmentListener clickListener;
+    protected View container;
+    private String fragmentTag;
+    private int fragmentTagId;
 
-    public MyMyFragment(int lay)
+    public String getFragmentTag()
+    {
+        return fragmentTag;
+    }
+
+    protected IMyMyFragmentClick clickListener;
+
+    public MyMyFragment(int lay, int id)
     {
         Bundle args = new Bundle();
         args.putInt("layout", lay);
         setArguments(args);
+        fragmentTagId = id;
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View v = inflater.inflate(getArguments().getInt("layout", 0), container, false);
         findViews(v);
-        init();
         return v;
     }
-
     @Override
     public void onAttach(Activity activity)
     {
         super.onAttach(activity);
-        clickListener = (MyMyFragmentListener) activity;
+        clickListener = (IMyMyFragmentClick) activity;
+        fragmentTag = getActivity().getResources().getString(fragmentTagId);
     }
 
-    protected abstract void findViews(View v);
-    protected abstract void init();
+    protected void findViews(View v)
+    {
+        container = v;
+    }
 }

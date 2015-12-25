@@ -26,7 +26,6 @@ public abstract class MyMyActivity
         setContentView(contentView);
         fTP = new FragmentTransactionPattern(this, frameView);
         //
-        initFragments();
         initViews();
         init();
     }
@@ -41,7 +40,6 @@ public abstract class MyMyActivity
         fTP.add(f);
     }
 
-    protected abstract void initFragments();
     protected abstract void initViews();
     protected abstract void init();
 }
