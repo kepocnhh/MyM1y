@@ -57,4 +57,51 @@ public class Tables
                 NAME + " text" + //", " +
                 ");";
     }
+
+    public static class Transactions
+    {
+        public static final String TABLE_NAME = "transactions" + "table";
+
+        public static final String FROM = "fromcashaccount";
+        public static final String SUMM = "summ";
+        public static final String PARENT = "parenttransaction";
+
+        public static final String CREATE_TABLE = "create table if not exists " +
+                TABLE_NAME + "(" +
+                BaseColumns._ID + " integer primary key autoincrement" + ", " +
+                PARENT + " integer" + ", " +
+                FROM + " integer" + ", " +
+                SUMM + " text" + ", " +
+                NAME + " text" + //", " +
+                ");";
+    }
+    public static class TransactionsAndTags
+    {
+        public static final String TABLE_NAME = "transactionsandtags" + "table";
+
+        public static final String TRANSACTIONID = "transactionid";
+        public static final String TAGID = "tagid";
+
+        public static final String CREATE_TABLE = "create table if not exists " +
+                TABLE_NAME + "(" +
+                BaseColumns._ID + " integer primary key autoincrement" + ", " +
+                TRANSACTIONID + " integer" + ", " +
+                TAGID + " integer" + //", " +
+                ");";
+    }
+    public static class Tags
+    {
+        public static final String TABLE_NAME = "tags" + "table";
+
+        public static final String COLOR = "color";
+        public static final String PARENT = "parenttag";
+
+        public static final String CREATE_TABLE = "create table if not exists " +
+                TABLE_NAME + "(" +
+                BaseColumns._ID + " integer primary key autoincrement" + ", " +
+                COLOR + " integer" + ", " +
+                PARENT + " integer" + ", " +
+                NAME + " text" + //", " +
+                ");";
+    }
 }
