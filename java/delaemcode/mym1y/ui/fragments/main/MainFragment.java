@@ -3,7 +3,7 @@ package delaemcode.mym1y.ui.fragments.main;
 import android.view.View;
 
 import delaemcode.mym1y.R;
-import delaemcode.mym1y.listeners.fragments.main.IMainFragmentClick;
+import delaemcode.mym1y.listeners.fragments.main.IMainFragmentListener;
 import delaemcode.mym1y.ui.fragments.MyMyFragment;
 
 public class MainFragment
@@ -46,8 +46,8 @@ public class MainFragment
 
     }
 
-    private IMainFragmentClick getClickListener()
+    private IMainFragmentListener getClickListener()
     {
-        return (IMainFragmentClick) clickListener;
+        return (IMainFragmentListener) clickListener;
     }
 }

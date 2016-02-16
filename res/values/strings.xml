@@ -4,4 +4,6 @@
     <!-- Fragments tags-->
     <!-- Main-->
     <string name="MainFragment">main_fragment</string>
+    <!-- Work-->
+    <string name="CashAccountsFragment">cash_accounts_fragment</string>
 </resources>

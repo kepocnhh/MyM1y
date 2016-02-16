@@ -1,9 +1,12 @@
 package delaemcode.mym1y.ui.activities;
 
 import delaemcode.mym1y.R;
+import delaemcode.mym1y.listeners.fragments.work.ICashAccountsFragmentListener;
+import delaemcode.mym1y.ui.fragments.work.CashAccountsFragment;
 
 public class Work
         extends MyMyActivity
+        implements ICashAccountsFragmentListener
 {
     public Work()
     {
@@ -19,6 +22,6 @@ public class Work
     @Override
     protected void init()
     {
-
+        addFragment(CashAccountsFragment.newInstance());
     }
 }

@@ -11,7 +11,7 @@ public class SQliteApi
     public static DatabaseHelper dbHelper;
     public static volatile SQLiteDatabase sdb;
     public static String DB_NAME = "mym1y";
-    public static int DB_VERSION = 1512281801;
+    public static int DB_VERSION = 1602161718;
 
     public static void createDb(Context context)
     {

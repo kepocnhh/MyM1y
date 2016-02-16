@@ -16,12 +16,12 @@ import delaemcode.mym1y.db.ContentDriver;
 import delaemcode.mym1y.db.SQliteApi;
 import delaemcode.mym1y.db.Tables;
 import delaemcode.mym1y.helpers.SQliteHelper;
-import delaemcode.mym1y.listeners.fragments.main.IMainFragmentClick;
+import delaemcode.mym1y.listeners.fragments.main.IMainFragmentListener;
 import delaemcode.mym1y.ui.fragments.main.MainFragment;
 
 public class Main
         extends MyMyActivity
-        implements IMainFragmentClick
+        implements IMainFragmentListener
 {
 
     public Main()
@@ -86,7 +86,10 @@ public class Main
         currency = ContentDriver.setCurrencyContentValues(cursor);
         cursor.close();
         //
-        CashAccount cashAccount = new CashAccount().setName("Наличко").setBalance("503.12").setAccountNumber("").setIco("nalichkoicon").setCashAccountType(cashAccountType).setCurrency(currency);
+        CashAccount cashAccount;
+        cashAccount = new CashAccount().setName("Наличко").setBalance("503.12").setAccountNumber("").setIco("nalichkoicon").setCashAccountType(cashAccountType).setCurrency(currency);
+        SQliteApi.insertCashAccount(ContentDriver.getContentValues(cashAccount));
+        cashAccount = new CashAccount().setName("Ещё наличка").setBalance("124234.76").setAccountNumber("").setIco("nalichkoicon").setCashAccountType(cashAccountType).setCurrency(currency);
         SQliteApi.insertCashAccount(ContentDriver.getContentValues(cashAccount));
     }
 

@@ -7,7 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import delaemcode.mym1y.listeners.fragments.IMyMyFragmentClick;
+import delaemcode.mym1y.listeners.fragments.IMyMyFragmentListener;
 
 public abstract class MyMyFragment
         extends Fragment
@@ -21,7 +21,7 @@ public abstract class MyMyFragment
         return fragmentTag;
     }
 
-    protected IMyMyFragmentClick clickListener;
+    protected IMyMyFragmentListener clickListener;
 
     public MyMyFragment(int lay, int id)
     {
@@ -42,7 +42,7 @@ public abstract class MyMyFragment
     public void onAttach(Activity activity)
     {
         super.onAttach(activity);
-        clickListener = (IMyMyFragmentClick) activity;
+        clickListener = (IMyMyFragmentListener) activity;
         fragmentTag = getActivity().getResources().getString(fragmentTagId);
     }
 
